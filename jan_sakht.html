@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let n = prompt("Enter N(?) : ");
+    firstDigit=[2,3,5,7];
+    for (let i = 0; i < firstDigit.length; i++) {
+        let sum=0;
+        for (let j = 0; j < n-1; j++) {
+            sum=(10**j)+sum;
+        }
+        const firstNumber = firstDigit[i]*(10**(n-1))+sum;
+        const lastNumber = (firstDigit[i]+1)*(10**(n-1))-1;
+        let number=firstNumber;
+        while (number<=lastNumber) {
+            if(number%10==1){
+                number=split(number);
+            }
+            if(is_prime(number)==true){
+                if (is_janSakht(number)==true) {
+                    console.log("jan sakht : " ,number);
+                }
+            }
+            if(number%10==3){
+                number=number+4;
+            }else{
+                number=number+2;
+            }
+        }
+    }
+    function split (number){
+        let t=0;
+        let x;
+        let sum=0;
+        while (Math.floor(number/10)!=0) {
+            x=number%10;
+            number=Math.floor(number/10);
+            if (x%2==0){
+                x=x+1;
+                if(x==5){
+                    x=7;
+                }
+            }else if(x==5){
+                x==7;
+            }
+            sum=sum+(x*(10**t));
+            t=t+1;
+        }
+        sum=(number*(10**t))+sum
+        return sum;
+    }
+    function is_prime(number){
+        if (number==2 || number==3 ){
+            return true;
+        }
+        if (number%2==0) {
+            return false;
+        }
+        else{
+          let b=3;
+          let j=Math.floor(number/2);
+          while(b<=j){
+                if(number%b==0){
+                    return false;
+                }else{
+                    b=b+2;
+                }
+        }
+        return true;
+        }
+    }
+    function is_janSakht(number) {
+        number=Math.floor(number/10);
+        while (number!=0) {
+            if(is_prime(number)==true){
+            number=Math.floor(number/10);
+                continue;}
+            else{
+                return false
+            }
+        }
+        return true;
+    }
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p" style="width: 100%;height: 100%;"></p>
+</body>
+<script>
+let row1 = prompt("Insert the number of rows in the first matrix : ");
+let column1 = prompt("Insert the number of columns in the first matrix : ");
+alert("So the number of rows in the second matrix must be : "+column1);
+let column2 = prompt("Insert the number of columns in the second matrix : ");
+var a=[];
+var x=[];
+var b=[];
+var result=[];
+let n,sum=0,string="",p="";
+for ( let i=0 ; i<row1 ; i++ ){
+	for( let j=0 ; j<column1 ;j++){
+		n=prompt("insert a number for a["+i+"]["+j+"] : ");
+		x.push(n);
+	}
+    a.push(x);
+    x=[];
+}
+for (let i=0 ; i<column1 ; i++ ){
+	for(let j=0 ; j<column2 ;j++){
+		n=prompt("insert a number for b["+i+"]["+j+"] : ");
+		x.push(n);
+	}
+    b.push(x);
+    x=[];
+}
+for (let i=0 ; i<row1 ; i++){
+	for(let q=0 ; q<column2 ; q++){
+		for(let j=0 ; j<column1 ; j++){
+			sum=sum+(a[i][j]*b[j][q]);	
+			}
+        x.push(sum);
+        console.log(sum);
+		sum=0;
+	}
+    result.push(x);
+    x=[];
+}
+</script>
+</html>
